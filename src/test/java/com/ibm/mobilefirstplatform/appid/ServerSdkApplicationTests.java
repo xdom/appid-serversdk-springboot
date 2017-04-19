@@ -1,4 +1,4 @@
-package sk.tuke.cloud.security;
+package com.ibm.mobilefirstplatform.appid;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

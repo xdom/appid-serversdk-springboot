@@ -1,4 +1,4 @@
-package sk.tuke.cloud.security;
+package com.ibm.mobilefirstplatform.appid;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

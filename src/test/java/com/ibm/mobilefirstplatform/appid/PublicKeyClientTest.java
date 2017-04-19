@@ -1,4 +1,4 @@
-package sk.tuke.cloud.security;
+package com.ibm.mobilefirstplatform.appid;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,8 +15,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Matchers.startsWith;
 import static org.mockito.Mockito.when;
-import static sk.tuke.cloud.security.PublicKeyClientTestConfig.DUMMY_RESPONSE;
-import static sk.tuke.cloud.security.PublicKeyClientTestConfig.DUMMY_WEB_ADDRESS;
 
 /**
  * @author Dominik Matta
@@ -30,15 +28,15 @@ public class PublicKeyClientTest {
     public void shouldRetrievePubKey() throws Exception {
         // given
         ResponseEntity<PublicKeyClient.PublicKeyResponse> responseEntity = new ResponseEntity<>(
-                DUMMY_RESPONSE, HttpStatus.OK
+                PublicKeyClientTestConfig.DUMMY_RESPONSE, HttpStatus.OK
         );
         when(restTemplate.getForEntity(
-                eq(DUMMY_WEB_ADDRESS + PublicKeyClient.PUBLIC_KEY_PATH),
+                eq(PublicKeyClientTestConfig.DUMMY_WEB_ADDRESS + PublicKeyClient.PUBLIC_KEY_PATH),
                 eq(PublicKeyClient.PublicKeyResponse.class)
         )).thenReturn(responseEntity);
 
         // when
-        PublicKeyClient client = new PublicKeyClient(DUMMY_WEB_ADDRESS, restTemplate);
+        PublicKeyClient client = new PublicKeyClient(PublicKeyClientTestConfig.DUMMY_WEB_ADDRESS, restTemplate);
         PublicKey publicKey = client.retrievePublicKey();
 
         // then
@@ -53,11 +51,11 @@ public class PublicKeyClientTest {
                 HttpStatus.INTERNAL_SERVER_ERROR
         );
         when(restTemplate.getForEntity(
-                startsWith(DUMMY_WEB_ADDRESS), eq(PublicKeyClient.PublicKeyResponse.class)
+                startsWith(PublicKeyClientTestConfig.DUMMY_WEB_ADDRESS), eq(PublicKeyClient.PublicKeyResponse.class)
         )).thenReturn(responseEntity);
 
         // when
-        PublicKeyClient client = new PublicKeyClient(DUMMY_WEB_ADDRESS, restTemplate);
+        PublicKeyClient client = new PublicKeyClient(PublicKeyClientTestConfig.DUMMY_WEB_ADDRESS, restTemplate);
         client.retrievePublicKey();
 
         // then PublicKeyRetrievalException is thrown

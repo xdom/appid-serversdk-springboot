@@ -1,4 +1,4 @@
-package sk.tuke.cloud.security;
+package com.ibm.mobilefirstplatform.appid;
 
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;

@@ -24,13 +24,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // @formatter:off
         http
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
+        .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()
-                .and()
+        .and()
                 .apply(new JWTConfigurer(publicKeyProvider));
+        // @formatter:on
     }
 }

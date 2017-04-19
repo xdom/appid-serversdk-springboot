@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 import java.security.PublicKey;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -73,9 +74,14 @@ final class DefaultAppIDTokens implements AppIDTokens {
     }
 
     private Collection<? extends GrantedAuthority> getGrantedAuthorities(Claims claims) {
-        return Arrays.stream(claims.get(SCOPES).toString().split(","))
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+        Object scopes = claims.get(SCOPES);
+        if (StringUtils.isEmpty(scopes)) {
+            return Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
+        } else {
+            return Arrays.stream(scopes.toString().split(","))
+                    .map(SimpleGrantedAuthority::new)
+                    .collect(Collectors.toList());
+        }
     }
 
     @Override

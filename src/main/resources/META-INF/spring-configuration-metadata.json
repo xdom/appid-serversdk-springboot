@@ -1,0 +1,9 @@
+{
+  "groups": [
+    {
+      "name": "appid",
+      "type": "com.ibm.mobilefirstplatform.appid.AppIDProperties",
+      "sourceType": "com.ibm.mobilefirstplatform.appid.AppIDProperties"
+    }
+  ]
+}

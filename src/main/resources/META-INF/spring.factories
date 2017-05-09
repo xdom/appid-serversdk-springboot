@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.ibm.mobilefirstplatform.appid.AppIDProperties
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.ibm.mobilefirstplatform.appid.SecurityConfiguration
